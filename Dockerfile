@@ -13,11 +13,11 @@ RUN apk add --update \
     libffi-dev \
     openssl-dev
 
-RUN curl -O https://ftp.postgresql.org/pub/pgadmin3/pgadmin4/v1.1/pip/pgadmin4-1.1-py2-none-any.whl --no-verbose
+RUN curl -O https://ftp.postgresql.org/pub/pgadmin/pgadmin4/v1.6/pip/pgadmin4-1.6-py2.py3-none-any.whl --no-verbose
 RUN pip install --upgrade pip
-RUN yes | pip install pgadmin4-1.1-py2-none-any.whl
+RUN yes | pip install pgadmin4-1.6-py2.py3-none-any.whl
 RUN sed -i "s/SERVER_MODE = True/SERVER_MODE = False/" /usr/lib/python2.7/site-packages/pgadmin4/config.py
-RUN sed -i "s/DEFAULT_SERVER = 'localhost'/DEFAULT_SERVER = '0.0.0.0'/" /usr/lib/python2.7/site-packages/pgadmin4/config.py
+RUN sed -i "s/DEFAULT_SERVER = '127.0.0.1'/DEFAULT_SERVER = '0.0.0.0'/" /usr/lib/python2.7/site-packages/pgadmin4/config.py
 
 RUN apk del curl \
     autoconf \
