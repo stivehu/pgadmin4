@@ -1,17 +1,16 @@
-FROM alpine:3.4
+FROM alpine:3.6
 MAINTAINER stive.hu@gmail.com
 RUN apk add --update  --no-cache \
     python \
     python-dev \
     py-pip \
     curl \
-    postgresql-dev \
     autoconf \
     gcc \
     g++ \
     make \
     libffi-dev \
-    openssl-dev
+    postgresql-dev
 
 RUN curl -O https://ftp.postgresql.org/pub/pgadmin/pgadmin4/v2.0/pip/pgadmin4-2.0-py2.py3-none-any.whl --no-verbose
 RUN pip install --upgrade pip
