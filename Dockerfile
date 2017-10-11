@@ -1,6 +1,6 @@
 FROM alpine:3.4
 MAINTAINER stive.hu@gmail.com
-RUN apk add --update \
+RUN apk add --update  --no-cache \
     python \
     python-dev \
     py-pip \
@@ -13,9 +13,9 @@ RUN apk add --update \
     libffi-dev \
     openssl-dev
 
-RUN curl -O https://ftp.postgresql.org/pub/pgadmin/pgadmin4/v1.6/pip/pgadmin4-1.6-py2.py3-none-any.whl --no-verbose
+RUN curl -O https://ftp.postgresql.org/pub/pgadmin/pgadmin4/v2.0/pip/pgadmin4-2.0-py2.py3-none-any.whl --no-verbose
 RUN pip install --upgrade pip
-RUN yes | pip install pgadmin4-1.6-py2.py3-none-any.whl
+RUN yes | pip install pgadmin4-2.0-py2.py3-none-any.whl
 RUN sed -i "s/SERVER_MODE = True/SERVER_MODE = False/" /usr/lib/python2.7/site-packages/pgadmin4/config.py
 RUN sed -i "s/DEFAULT_SERVER = '127.0.0.1'/DEFAULT_SERVER = '0.0.0.0'/" /usr/lib/python2.7/site-packages/pgadmin4/config.py
 
