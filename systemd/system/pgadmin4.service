@@ -9,7 +9,7 @@ ExecStartPre=-/usr/bin/docker kill stivehu/pgadmin4
 ExecStartPre=-/usr/bin/docker rm stivehu/pgadmin4
 ExecStartPre=/usr/bin/docker pull stivehu/pgadmin4
 
-ExecStart=/usr/bin/docker run -p 5050:5050 -v /home/stive:/root stivehu/pgadmin4
+ExecStart=/usr/bin/docker run -p 5050:5050 -v /root:/root stivehu/pgadmin4
 
 [Install]
 WantedBy=multi-user.target
