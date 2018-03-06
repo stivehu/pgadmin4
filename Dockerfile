@@ -1,4 +1,4 @@
-FROM alpine:3.6
+FROM alpine:latest
 MAINTAINER stive.hu@gmail.com
 RUN apk add --update  --no-cache \
     python \
@@ -12,9 +12,9 @@ RUN apk add --update  --no-cache \
     libffi-dev \
     postgresql-dev
 
-RUN curl -O https://ftp.postgresql.org/pub/pgadmin/pgadmin4/v2.0/pip/pgadmin4-2.0-py2.py3-none-any.whl --no-verbose
+RUN curl -O https://ftp.postgresql.org/pub/pgadmin/pgadmin4/v2.1/pip/pgadmin4-2.1-py2.py3-none-any.whl --no-verbose
 RUN pip install --upgrade pip
-RUN yes | pip install pgadmin4-2.0-py2.py3-none-any.whl
+RUN yes | pip install pgadmin4-2.1-py2.py3-none-any.whl
 RUN sed -i "s/SERVER_MODE = True/SERVER_MODE = False/" /usr/lib/python2.7/site-packages/pgadmin4/config.py
 RUN sed -i "s/DEFAULT_SERVER = '127.0.0.1'/DEFAULT_SERVER = '0.0.0.0'/" /usr/lib/python2.7/site-packages/pgadmin4/config.py
 
